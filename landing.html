@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>illumorama — Wave #1 · Illuminated Pokémon Dioramas, Hand-Built on the Central Coast</title>
+<meta name="description" content="Six custom illuminated Pokémon dioramas. Oversized cards, sculpted elemental scenes, real lighting. Hand-built on the Central Coast NSW, shipped Australia-wide. Join the Wave #1 waitlist." />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<style>
+/* ============================================================
+   ILLUMORAMA — LANDING v3.1 "The Luminous Serif"
+   Tokens mirror colors_and_type.css (design system v3).
+   ============================================================ */
+@import url('https://api.fontshare.com/v2/css?f[]=zodiak@400,700,900&f[]=satoshi@400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+:root{
+  --bg:#14100d; --surface:#211a15; --surface-2:#2b211a; --fg:#fff4e6;
+  --muted:#a89f97; --border:#3a2f28;
+  --fire:#ff4f00; --fire-glow:#ff5a1f; --fire-hover:#ff7a3d;
+  --cyan:#2fd0e0; --gold:#ffd98a; --frame-gold:#ffd98a8c;
+  --success:#46d17a; --danger:#ff5a47;
+  --el-fire:#ff4f00; --el-water:#2fa8e0; --el-ghost:#9b6bd6; --el-dark:#6b5e74; --el-electric:#ffc83d;
+  --stage-inferno:#e15b56; --stage-flame:#c36477; --stage-torrent:#75a7ef;
+  --stage-haunt:#756de3; --stage-aura:#eda85b; --stage-moon:#2c2d2f;
+  --f-word:'Pacifico','Segoe Script',cursive;
+  --f-disp:'Zodiak',Georgia,'Times New Roman',serif;
+  --f-body:'Satoshi',system-ui,-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --f-mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+  --r-sm:5px; --r:8px; --r-lg:10px; --r-pill:999px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --glow-ember:0 0 0 1px #ff5a1f33, 0 8px 28px -10px #ff5a1f99;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:#ff4f0055}
+img,video{display:block;max-width:100%}
+button{font-family:inherit}
+
+/* ---------- shared ---------- */
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.kick{font:700 12px/1 var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:var(--fire);
+  display:flex;align-items:center;gap:12px}
+.kick::after{content:"";height:1px;width:52px;background:linear-gradient(90deg,var(--fire),var(--cyan))}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:700 15px/1 var(--f-body);
+  padding:15px 26px;border-radius:var(--r);border:1px solid transparent;cursor:pointer;position:relative;
+  overflow:hidden;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn--fire{background:var(--fire);color:#fffefb;box-shadow:var(--glow-ember)}
+.btn--fire:hover{background:var(--fire-hover);box-shadow:0 0 0 1px #ff5a1f55,0 12px 38px -10px #ff5a1fcc}
+.btn--fire::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(105deg,transparent,#fff4e644,transparent);transform:skewX(-20deg);transition:left .6s var(--ease)}
+.btn--fire:hover::after{left:130%}
+html.rm .btn--fire::after{display:none}
+.btn--cyan{background:transparent;color:var(--cyan);border-color:var(--cyan)}
+.btn--cyan:hover{background:#2fd0e014}
+
+/* ---------- glass nav ---------- */
+.gnav{position:fixed;top:18px;left:0;right:0;margin-inline:auto;width:fit-content;z-index:60;display:flex;align-items:center;
+  gap:22px;padding:9px 10px 9px 20px;border-radius:var(--r-pill);border:1px solid #fff4e614;
+  background:color-mix(in oklab,#211a15 74%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 18px 44px -22px #000;white-space:nowrap}
+.gnav .wm{font:400 20px/1 var(--f-word);color:var(--gold);text-shadow:0 0 14px #ffd98a44;text-decoration:none}
+.gnav nav{display:flex;gap:18px}
+.gnav nav a{color:var(--muted);font:700 13px/1 var(--f-body);text-decoration:none;transition:color .2s var(--ease)}
+.gnav nav a:hover{color:var(--fg)}
+.gnav .btn{padding:10px 16px;font-size:13px}
+.gnav-ig{display:none}
+@media(max-width:600px){.gnav{gap:10px;padding:9px 15px}.gnav nav{gap:10px}
+  .gnav nav a{font-size:12px}.gnav .btn{display:none}
+  .gnav-ig{display:grid;place-items:center;width:28px;height:28px;color:var(--muted);transition:color .2s var(--ease)}
+  .gnav-ig:hover{color:var(--gold)}
+  .hero-social{display:none}}
+
+/* ---------- hero slider ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--bg)}
+.hero .vid,.hero .wash{position:absolute;inset:0}
+.hero .vid video{width:100%;height:100%;object-fit:cover;opacity:.62}
+.hero .wash{background:
+  radial-gradient(130% 100% at 62% 30%, color-mix(in oklab,var(--sc) 30%,transparent) 0%, transparent 55%),
+  linear-gradient(180deg, #14100d99 0%, #14100d22 30%, #14100d55 68%, #14100d 100%);
+  z-index:1}
+
+/* stage-tinted info pane (left) */
+.pane{position:absolute;left:16px;width:50vw;
+  top:calc(124px + clamp(52px,8vw,128px));bottom:96px;
+  height:calc(min(72.5vh, 100svh - 124px - clamp(52px,8vw,128px) - 96px)*.632);
+  min-height:340px;margin:auto 0;z-index:2;
+  border-radius:var(--r-lg);overflow:hidden;border:1px solid #fff4e614;
+  background:color-mix(in oklab,#14100d 48%,transparent);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  display:flex;align-items:center}
+.pane .tint{position:absolute;inset:0}
+.pane .pinner{position:relative;z-index:1;padding:56px 52px;width:100%;max-width:min(640px,40vw)}
+.pane .sku{font:700 12px/1 var(--f-mono);letter-spacing:.2em;color:var(--gold)}
+.pane h1{font:900 clamp(38px,4.4vw,64px)/1.02 var(--f-disp);letter-spacing:-.015em;margin:14px 0 12px;max-width:12ch}
+.pane p{color:#fff4e6d9;max-width:44ch;font-size:15.5px}
+.pane .tagrow{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+
+/* big background word — locked just below the menu, above the product */
+.hero .bigword{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+.hero .bigword span{position:absolute;top:116px;left:0;right:0;text-align:center;
+  font:900 clamp(52px,8vw,128px)/1 var(--f-disp);letter-spacing:.03em;text-transform:uppercase;
+  color:color-mix(in oklab,var(--sc) 20%,transparent);
+  -webkit-text-stroke:1.5px color-mix(in oklab,var(--sc) 66%,#fff4e6 14%);opacity:.62;white-space:nowrap;
+  text-shadow:0 4px 40px #14100d99}
+
+/* product cutout — floats free, element glow, no frame */
+/* product band: starts below the element word, ends above the bottom chrome */
+.hero .stagewrap{position:absolute;left:0;right:0;
+  top:calc(124px + clamp(52px,8vw,128px));bottom:96px;z-index:5}
+.cutout{position:absolute;top:50%;left:50%;translate:-50% -50%;
+  max-height:calc(min(72.5vh, 100svh - 124px - clamp(52px,8vw,128px) - 96px)*.7);max-width:80vw;width:auto;
+  filter:drop-shadow(0 30px 46px color-mix(in oklab,var(--sc) 38%,#000))
+         drop-shadow(0 0 70px color-mix(in oklab,var(--sc) 34%,transparent))}
+
+/* hero social — top right */
+.hero-social{position:absolute;top:26px;right:26px;z-index:6;display:flex;gap:10px}
+.hero-social a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--fg);
+  border:1px solid #fff4e622;background:color-mix(in oklab,#211a15 60%,transparent);backdrop-filter:blur(8px);
+  transition:all .25s var(--ease)}
+.hero-social a:hover{color:var(--gold);border-color:var(--frame-gold);box-shadow:0 0 18px -4px #ffd98a66}
+
+/* hero chrome (unchanged, centered strip at the bottom) */
+.hero .chrome{position:absolute;left:0;right:0;bottom:34px;z-index:6}
+.hero .chrome .inner{max-width:1140px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.hero .chrome .side{display:flex;align-items:center;gap:16px}
+.arrowbtn{width:46px;height:46px;border-radius:50%;border:1px solid #fff4e622;background:color-mix(in oklab,#211a15 60%,transparent);
+  color:var(--fg);cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(8px);transition:all .25s var(--ease)}
+.arrowbtn:hover{border-color:var(--frame-gold);box-shadow:0 0 18px -4px #ffd98a66}
+.dots{display:flex;gap:8px;align-items:center}
+.dots button{width:8px;height:8px;border-radius:50%;border:0;background:#fff4e633;cursor:pointer;padding:0;transition:all .3s var(--ease)}
+.dots button.on{width:26px;border-radius:4px;background:var(--fire);box-shadow:0 0 10px #ff5a1f88}
+.counter{font:700 13px/1 var(--f-mono);letter-spacing:.18em}
+.counter .tot{color:var(--muted)}
+@media(max-width:760px){
+  .dots{display:none}
+  .arrowbtn{width:40px;height:40px}
+  .hero .chrome .inner{padding:0 16px}
+}
+
+/* hero mobile — pane becomes a bottom sheet under the product */
+@media(max-width:880px){
+  .pane{top:auto;transform:none;translate:none;left:12px;right:12px;bottom:104px;width:auto;
+    height:250px;min-height:0;margin:0;display:flex;align-items:center;justify-content:center}
+  .hero .bigword span{top:94px}
+  .pane .pinner{padding:18px 20px;max-width:none;text-align:center}
+  .pane h1{font-size:27px;margin:10px 0 8px;max-width:none}
+  .pane p{font-size:13.5px;max-width:none;margin:0 auto}
+  .pane .tagrow{margin-top:12px;justify-content:center}
+  .hero .stagewrap{top:calc(102px + clamp(40px,10vw,72px));bottom:318px}
+  .cutout{top:auto;bottom:0;translate:-50% 0;max-height:min(100%,36vh);max-width:88vw}
+  .hero .bigword span{font-size:clamp(40px,10vw,72px)}
+  .hero-social{top:20px;right:16px}
+  .hero-social a{width:40px;height:40px}
+}
+
+/* element tags + gold flag */
+.tag{display:inline-flex;align-items:center;gap:6px;font:700 11px/1 var(--f-body);text-transform:uppercase;
+  letter-spacing:.06em;padding:6px 12px;border-radius:var(--r-sm);border:1px solid;color:var(--tc);
+  background:color-mix(in oklab,var(--tc) 12%,#14100d88);border-color:color-mix(in oklab,var(--tc) 34%,transparent)}
+.gflag{display:inline-flex;align-items:center;gap:6px;font:700 11px/1 var(--f-body);letter-spacing:.06em;
+  text-transform:uppercase;padding:6px 12px;border-radius:var(--r-sm);color:var(--gold);
+  background:#ffd98a14;border:1px solid #ffd98a40}
+
+/* ---------- floating CTA ---------- */
+.floatcta{position:fixed;left:50%;bottom:28px;z-index:70;transform:translateX(-50%)}
+.floatcta .btn{box-shadow:var(--glow-ember),0 18px 50px -14px #000;animation:ctapulse 5s var(--ease) infinite alternate;width:178px}
+@keyframes ctapulse{from{box-shadow:0 0 0 1px #ff5a1f33,0 8px 28px -10px #ff5a1f77,0 18px 50px -14px #000}
+  to{box-shadow:0 0 0 1px #ff5a1f66,0 10px 40px -8px #ff5a1fbb,0 18px 50px -14px #000}}
+html.rm .floatcta .btn{animation:none}
+@media(max-width:760px){.floatcta .btn{width:auto;padding:14px 14px;font-size:13.5px}}
+
+/* ---------- craft (one continuous flow, bento decor) ---------- */
+.craft{position:relative;padding:130px 0 40px;overflow:hidden}
+.craft .deco{position:absolute;pointer-events:none;z-index:0}
+.craft .deco img{opacity:.13;filter:saturate(.85)}
+.craft .deco--fire{top:-20px;left:-10vw;width:min(72vw,1100px);
+  -webkit-mask-image:radial-gradient(72% 72% at 50% 50%,#000 28%,transparent 72%);
+  mask-image:radial-gradient(72% 72% at 50% 50%,#000 28%,transparent 72%)}
+.craft .deco--megax{top:24%;right:4vw;width:min(58vw,900px);
+  -webkit-mask-image:radial-gradient(72% 72% at 50% 50%,#000 26%,transparent 70%);
+  mask-image:radial-gradient(72% 72% at 50% 50%,#000 26%,transparent 70%)}
+.craft .deco--megax img{opacity:.11}
+.craft .deco--gengar{top:50%;left:-13vw;width:min(56vw,860px);
+  -webkit-mask-image:radial-gradient(72% 72% at 50% 50%,#000 26%,transparent 70%);
+  mask-image:radial-gradient(72% 72% at 50% 50%,#000 26%,transparent 70%)}
+.craft .deco--gengar img{opacity:.11}
+.craft .deco--storm{bottom:-50px;right:-9vw;width:min(64vw,980px);
+  -webkit-mask-image:radial-gradient(72% 56% at 50% 50%,#000 14%,transparent 64%);
+  mask-image:radial-gradient(72% 56% at 50% 50%,#000 14%,transparent 64%)}
+.craft>.wrap{position:relative;z-index:1}
+.craft h2{font:900 clamp(36px,5vw,64px)/1.05 var(--f-disp);letter-spacing:-.015em;margin:16px 0 10px;max-width:16ch}
+.craft h2 em{font-style:italic;color:var(--gold)}
+.craft .lede{color:var(--muted);max-width:58ch;font-size:17.5px}
+.steps{margin:64px 0 0}
+.step{display:grid;grid-template-columns:74px 1fr;gap:22px;position:relative;padding-bottom:44px}
+.step::before{content:"";position:absolute;left:36px;top:82px;bottom:6px;width:1px;
+  background:linear-gradient(180deg,var(--border),transparent)}
+.step:last-child::before{display:none}
+.step .n{width:74px;height:74px;border-radius:50%;border:1px solid var(--frame-gold);display:grid;place-items:center;
+  font:900 22px/1 var(--f-disp);color:var(--gold);background:color-mix(in oklab,#211a15 70%,transparent);
+  box-shadow:0 0 26px -8px #ffd98a55}
+.step h3{font:700 25px/1.15 var(--f-disp);margin:10px 0 6px}
+.step p{color:var(--muted);max-width:54ch;font-size:15.5px}
+.storyband{margin:72px 0 0;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+@media(max-width:880px){.storyband{grid-template-columns:1fr}}
+.frame{position:relative;border-radius:var(--r-lg);border:1px solid var(--frame-gold);background:#14100dcc;
+  box-shadow:0 0 0 1px #ffd98a22, 0 30px 80px -30px #000, 0 0 60px -18px color-mix(in oklab,var(--sc,#e15b56) 55%,transparent);
+  padding:8px;will-change:transform}
+.frame::before,.frame::after{content:"";position:absolute;width:15px;height:15px;border:2px solid var(--gold);opacity:.9}
+.frame::before{top:-2px;left:-2px;border-right:0;border-bottom:0;border-radius:5px 0 0 0}
+.frame::after{bottom:-2px;right:-2px;border-left:0;border-top:0;border-radius:0 0 5px 0}
+.storyband .frame video{border-radius:6px;width:100%}
+.storyband .cap{font:500 12px/1.5 var(--f-mono);color:var(--muted);margin-top:10px;letter-spacing:.06em}
+.storyband h3{font:900 clamp(26px,3vw,38px)/1.12 var(--f-disp);margin-bottom:14px}
+.storyband p{color:var(--muted);font-size:16px;margin-bottom:14px;max-width:52ch}
+.storyband p b{color:var(--fg)}
+.makers{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.maker{display:flex;align-items:center;gap:11px;padding:10px 16px 10px 10px;border-radius:var(--r-pill);
+  background:var(--surface);border:1px solid var(--border);color:var(--fg);text-decoration:none;
+  transition:border-color .25s var(--ease),box-shadow .25s var(--ease)}
+.maker:hover{border-color:var(--frame-gold);box-shadow:0 0 18px -6px #ffd98a55}
+.maker i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 13px/1 var(--f-body);color:#14100d;font-style:normal}
+.maker b{font:700 13.5px/1.1 var(--f-body)}
+.maker svg{color:var(--muted);transition:color .25s var(--ease)}
+.maker:hover svg{color:var(--gold)}
+.wideshot{margin:84px 0 0;position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border)}
+.wideshot img{width:100%;height:min(46vh,440px);object-fit:cover}
+.wideshot .cap{position:absolute;left:0;right:0;bottom:0;padding:44px 24px 16px;
+  background:linear-gradient(180deg,transparent,#14100de6);font:500 12.5px/1.5 var(--f-mono);color:#fff4e6cc;letter-spacing:.06em}
+
+/* ---------- FAQ (still inside the flow) ---------- */
+.faq{margin:88px 0 0}
+.faq h3{font:900 clamp(26px,3vw,38px)/1.12 var(--f-disp);margin-bottom:26px}
+.qa{border-top:1px solid var(--border)}
+.qa:last-of-type{border-bottom:1px solid var(--border)}
+.qa button.q{width:100%;background:none;border:0;color:var(--fg);display:flex;justify-content:space-between;gap:18px;
+  align-items:center;text-align:left;padding:20px 4px;font:700 17px/1.35 var(--f-body);cursor:pointer}
+.qa button.q svg{flex:none;transition:transform .35s var(--ease);color:var(--gold)}
+.qa.open button.q svg{transform:rotate(45deg)}
+.qa .a{color:var(--muted);max-width:66ch;font-size:15.5px;padding:0 4px}
+.qa .a p{padding-bottom:20px}
+
+/* ---------- final CTA ---------- */
+.drop{position:relative;padding:150px 0 130px;text-align:center;overflow:hidden}
+.drop .glowbed{position:absolute;inset:auto 0 0 0;height:70%;pointer-events:none;
+  background:radial-gradient(60% 90% at 50% 100%, #ff4f0022 0%, transparent 70%)}
+.drop .kick{justify-content:center}
+.drop .kick::before{content:"";height:1px;width:52px;background:linear-gradient(90deg,var(--cyan),var(--fire))}
+.drop h2{font:900 clamp(38px,5.6vw,72px)/1.04 var(--f-disp);letter-spacing:-.015em;margin:18px auto 12px;max-width:18ch}
+.drop h2 em{font-style:italic;color:var(--gold)}
+.drop .sub{color:var(--muted);max-width:54ch;margin:0 auto 40px;font-size:17px}
+.wlform{display:flex;gap:12px;justify-content:center;align-items:stretch;max-width:560px;margin:0 auto}
+.wlform .input{flex:1;background:var(--surface);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);
+  padding:15px 18px;font:500 15.5px/1 var(--f-body);transition:border-color .2s var(--ease),box-shadow .2s var(--ease);min-width:0}
+.wlform .input:focus{outline:none;border-color:var(--fire);box-shadow:var(--glow-ember)}
+.ctaslot{width:178px;height:49px;flex:none;border-radius:var(--r)}
+.wl-note{margin-top:18px;font-size:13.5px;color:var(--muted)}
+.wl-done{font:700 17px/1.5 var(--f-body);color:var(--success)}
+@media(max-width:560px){.wlform{flex-direction:column;align-items:center}.ctaslot{width:132px}}
+
+/* ---------- footer (faded Greninja backdrop) ---------- */
+footer.foot{border-top:1px solid var(--border);padding:64px 0 40px;position:relative}
+.foot .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+@media(max-width:760px){.foot .fgrid{grid-template-columns:1fr}
+  .foot .fgrid>div:nth-child(2){display:none}}
+.foot .wm{font:400 30px/1 var(--f-word);color:var(--gold);text-shadow:0 0 18px #ffd98a44}
+.foot p{color:var(--muted);font-size:14px;max-width:34ch;margin-top:14px}
+.foot h4{font:700 12px/1 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:11px}
+.foot ul a{color:var(--fg);font-size:14.5px;text-decoration:none;opacity:.85;transition:opacity .2s,color .2s}
+.foot ul a:hover{opacity:1;color:var(--gold)}
+.foot .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);
+  padding-top:26px;color:var(--muted);font-size:12.5px}
+.foot .duo{height:1px;background:linear-gradient(90deg,var(--fire),transparent 30%,transparent 70%,var(--cyan));
+  position:absolute;top:-1px;left:0;right:0}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/framer-motion@11.11.13/dist/framer-motion.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+const { motion, AnimatePresence } = window.Motion;
+const EASE = [0.16, 1, 0.3, 1];
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (RM) document.documentElement.classList.add('rm');
+
+/* ---------------- Wave #1 data ---------------- */
+const WAVE = [
+  { sku:'W1/001', name:'Mega Charizard X', el:'Fire', elc:'var(--el-fire)', stage:'var(--stage-inferno)',
+    word:'Inferno', img:'assets/w1-01-nobg.webp', vid:'assets/bg-fire-inferno.mp4',
+    line:'360 HP of hand-wired inferno. The chase card you never pulled, rebuilt in three dimensions.' },
+  { sku:'W1/002', name:'Charizard', el:'Fire', elc:'var(--el-fire)', stage:'var(--stage-flame)',
+    word:'First Flame', img:'assets/w1-02-nobg.webp', vid:'assets/bg-fire-ember.mp4',
+    line:'The one that started every binder. Now it burns on your shelf, painted sky and all.' },
+  { sku:'W1/003', name:'Greninja', el:'Water', elc:'var(--el-water)', stage:'var(--stage-torrent)',
+    word:'Torrent', img:'assets/w1-03-nobg.webp', vid:'assets/bg-water-torrent.mp4',
+    line:'Mist Slash, frozen mid-strike in a moonlit forest torrent. Sharpest thing we’ve ever glued.' },
+  { sku:'W1/004', name:'Gengar', el:'Ghost', elc:'var(--el-ghost)', stage:'var(--stage-haunt)',
+    word:'Haunt', img:'assets/w1-04-nobg.webp', vid:'assets/bg-ghost-haunt.mp4',
+    line:'Grinning in a graveyard that actually glows. Sleep well, legend.' },
+  { sku:'W1/005', name:'Lucario', el:'Fighting', elc:'var(--el-electric)', stage:'var(--stage-aura)',
+    word:'Aura', img:'assets/w1-05-nobg.webp', vid:'assets/bg-fighting-aura.mp4',
+    line:'Reads auras from half a mile away. Reads the room from your bookshelf, canyon light included.' },
+  { sku:'W1/006', name:'Umbreon', el:'Dark', elc:'var(--el-dark)', stage:'var(--stage-moon)',
+    word:'Moonlight', wc:'#ffd98a', img:'assets/w1-06-nobg.webp', vid:'assets/bg-dark-moonlit.mp4',
+    line:'Gold rings on a pitch-black build. The quiet flex of Wave #1.' },
+];
+
+const FAQS = [
+  { q:'Are these official Pokémon products?', a:'Nah — they’re hand-built collector art pieces, made in our workshop. Oversized card shell, sculpted scene, real lighting. Every design is an entirely custom build you won’t see anywhere else — not a factory anything.' },
+  { q:'How many exist?', a:'Wave #1 launches with six designs — Mega Charizard X, Charizard, Greninja, Gengar, Lucario and Umbreon. Each one is hand-crafted in small numbers, and if the design you’re chasing is spoken for, we can build yours to order. The rarer the card, the deeper the lore we build into its scene.' },
+  { q:'Do they actually light up?', a:'That’s the whole point, mate. Real LEDs, wired by hand and tuned to the element — ember flicker for fire, cool cyan for water, that eerie violet for Gengar. They’re built to be seen in the dark.' },
+  { q:'When’s the drop?', a:'When they’re ready and not a day before — hand-built means hand-built. The waitlist hears the exact date first and gets first dibs. That’s the only queue there is.' },
+  { q:'Where do you ship?', a:'Australia-wide from the Central Coast, NSW — packed like the collector pieces they are. Overseas collector? Get in touch and we’ll see what we can sort.' },
+];
+
+/* ---------------- Icons ---------------- */
+const Ic = {
+  flame: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>,
+  drop:  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>,
+  ghost: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 10h.01M15 10h.01M12 2a8 8 0 00-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 00-8-8z"/></svg>,
+  moon:  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>,
+  zap:   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+  star:  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9L21 9.3l-5.4 4.4 1.8 7L12 16.8 6.6 20.7l1.8-7L3 9.3l6.6-.4z"/></svg>,
+  left:  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>,
+  right: <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>,
+  plus:  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>,
+  ig: (s)=> <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>,
+};
+const elIcon = (el) => el==='Fire'?Ic.flame : el==='Water'?Ic.drop : el==='Ghost'?Ic.ghost : el==='Dark'?Ic.moon : Ic.zap;
+
+/* ---------------- Slide video (hides itself if a render is missing) ---------------- */
+function SlideVideo({ src }) {
+  const [dead, setDead] = useState(false);
+  useEffect(() => setDead(false), [src]);
+  if (dead) return null;
+  return (
+    <video key={src} autoPlay muted loop playsInline preload="metadata"
+      onError={() => setDead(true)} src={src} />
+  );
+}
+
+/* ---------------- Hero slider ---------------- */
+function Hero() {
+  const [[idx, dir], setIdx] = useState(() => {
+    try { const s = parseInt(localStorage.getItem('illu:hero')||'0',10);
+      return [isNaN(s)||s<0||s>=WAVE.length?0:s, 0]; } catch(e){ return [0,0]; }
+  });
+  const paused = useRef(false);
+  const go = useCallback((i, d) => {
+    setIdx(([cur]) => {
+      const n = (i + WAVE.length) % WAVE.length;
+      try { localStorage.setItem('illu:hero', String(n)); } catch(e){}
+      return [n, d !== undefined ? d : 1];
+    });
+  }, []);
+  useEffect(() => {
+    const t = setInterval(() => { if (!paused.current) go(idx+1, 1); }, 7000);
+    return () => clearInterval(t);
+  }, [idx, go]);
+  useEffect(() => {
+    const k = (e) => { if (e.key==='ArrowRight') go(idx+1,1); else if (e.key==='ArrowLeft') go(idx-1,-1); };
+    window.addEventListener('keydown', k);
+    return () => window.removeEventListener('keydown', k);
+  }, [idx, go]);
+  const px = useRef(null);
+  const s = WAVE[idx];
+
+  const artV = {
+    enter:(d)=>({ x: d>0?110:-110, opacity:0, scale:.95 }),
+    center:{ x:0, opacity:1, scale:1, transition:{ duration:.8, ease:EASE } },
+    exit:(d)=>({ x: d>0?-130:130, opacity:0, scale:.96, transition:{ duration:.5, ease:EASE } }),
+  };
+  const wordV = {
+    enter:(d)=>({ x: d>0?260:-260, opacity:0 }),
+    center:{ x:0, opacity:1, transition:{ duration:.9, ease:EASE } },
+    exit:(d)=>({ x: d>0?-260:260, opacity:0, transition:{ duration:.55, ease:EASE } }),
+  };
+  const metaV = {
+    enter:{ y:26, opacity:0 },
+    center:{ y:0, opacity:1, transition:{ duration:.7, ease:EASE, delay:.15 } },
+    exit:{ y:-14, opacity:0, transition:{ duration:.35, ease:EASE } },
+  };
+  const tintStyle = (stage) => ({
+    background: 'linear-gradient(165deg, color-mix(in oklab, ' + stage + ' 42%, #14100d) 0%, ' +
+      'color-mix(in oklab, ' + stage + ' 18%, #14100d) 58%, #14100d 100%)'
+  });
+
+  return (
+    <section className="hero" data-od-id="hero" aria-roledescription="carousel"
+      style={{'--sc': s.stage}}
+      onPointerEnter={()=>{paused.current=true;}} onPointerLeave={()=>{paused.current=false;}}
+      onPointerDown={(e)=>{px.current=e.clientX;}}
+      onPointerUp={(e)=>{ if(px.current==null) return;
+        const d=e.clientX-px.current; px.current=null;
+        if(d<-50) go(idx+1,1); else if(d>50) go(idx-1,-1); }}>
+
+      <AnimatePresence custom={dir}>
+        <motion.div className="vid" key={'v'+idx} custom={dir}
+          initial={{opacity:0}} animate={{opacity:1, transition:{duration:1, ease:EASE}}}
+          exit={{opacity:0, transition:{duration:.6}}}>
+          <SlideVideo src={s.vid} />
+        </motion.div>
+      </AnimatePresence>
+      <div className="wash" />
+
+      {/* stage-tinted info pane */}
+      <div className="pane" data-od-id="hero-pane">
+        <AnimatePresence>
+          <motion.div className="tint" key={'t'+idx} style={tintStyle(s.stage)}
+            initial={{opacity:0}} animate={{opacity:.68, transition:{duration:.8, ease:EASE}}}
+            exit={{opacity:0, transition:{duration:.5}}} />
+        </AnimatePresence>
+        <div className="pinner">
+          <AnimatePresence mode="wait">
+            <motion.div key={'m'+idx} variants={metaV} initial="enter" animate="center" exit="exit">
+              <div className="sku mono">{s.sku} · WAVE #1</div>
+              <h1 data-od-id={'hero-title-'+(idx+1)}>{s.name}</h1>
+              <p>{s.line}</p>
+              <div className="tagrow">
+                <span className="tag" style={{'--tc': s.elc}}>{elIcon(s.el)}{s.el}</span>
+                <span className="gflag">{Ic.star}1st Edition</span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* big element word — locked below the menu, above the product */}
+      <div className="bigword" aria-hidden="true">
+        <AnimatePresence custom={dir}>
+          <motion.span key={'w'+idx} custom={dir} variants={wordV} initial="enter" animate="center" exit="exit"
+            style={{position:'absolute', ...(s.wc ? {WebkitTextStroke:'1.5px '+s.wc, color:'#ffd98a1c'} : {})}}>
+            {s.word}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+
+      {/* product cutout */}
+      <div className="stagewrap">
+        <AnimatePresence custom={dir}>
+          <motion.img key={'a'+idx} custom={dir} variants={artV} initial="enter" animate="center" exit="exit"
+            className="cutout" data-od-id={'hero-product-'+(idx+1)}
+            style={{position:'absolute'}}
+            src={s.img} alt={s.name + ' illuminated diorama — ' + s.sku} />
+        </AnimatePresence>
+      </div>
+
+      {/* social — top right */}
+      <div className="hero-social" data-od-id="hero-social">
+        <a href="https://www.instagram.com/illumorama" target="_blank" rel="noreferrer" aria-label="illumorama on Instagram">
+          {Ic.ig(19)}
+        </a>
+      </div>
+
+      <div className="chrome">
+        <div className="inner">
+          <div className="side">
+            <button className="arrowbtn" aria-label="Previous diorama" onClick={()=>go(idx-1,-1)}>{Ic.left}</button>
+            <button className="arrowbtn" aria-label="Next diorama" onClick={()=>go(idx+1,1)}>{Ic.right}</button>
+          </div>
+          <div className="side">
+            <div className="dots">
+              {WAVE.map((w,n)=>(
+                <button key={w.sku} className={n===idx?'on':''} aria-label={w.name}
+                  onClick={()=>go(n, n>idx?1:-1)} />
+              ))}
+            </div>
+            <span className="counter mono"><span>{String(idx+1).padStart(2,'0')}</span><span className="tot"> / 06</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Floating -> docking CTA ---------------- */
+function FloatingCTA({ slotRef, onSubmit }) {
+  const wrapRef = useRef(null);
+  const mergedRef = useRef(false);
+  const [merged, setMerged] = useState(false);
+  useEffect(() => {
+    let raf = 0;
+    const tick = () => {
+      const el = wrapRef.current, slot = slotRef.current;
+      if (!el) return;
+      if (!slot) { el.style.transform = 'translateX(-50%)'; return; }
+      const sr = slot.getBoundingClientRect();
+      const bh = 49, margin = 28;
+      const defCy = window.innerHeight - margin - bh/2;
+      const slotCy = sr.top + sr.height/2;
+      const dy = Math.min(0, slotCy - defCy);
+      const near = Math.max(0, Math.min(1, (defCy - slotCy + 160) / 160));
+      const dx = ((sr.left + sr.width/2) - window.innerWidth/2) * (dy < 0 ? 1 : near);
+      el.style.transform = 'translateX(calc(-50% + ' + dx + 'px)) translateY(' + dy + 'px)';
+      const m = dy < -2;
+      if (m !== mergedRef.current) { mergedRef.current = m; setMerged(m); }
+    };
+    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); };
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', onScroll);
+    tick();
+    const iv = setInterval(tick, 350);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll);
+      cancelAnimationFrame(raf); clearInterval(iv); };
+  }, [slotRef]);
+  const click = () => {
+    if (mergedRef.current) { onSubmit(); return; }
+    const el = document.getElementById('drop');
+    if (el) window.scrollTo({ top: el.offsetTop, behavior: RM ? 'auto' : 'smooth' });
+  };
+  return (
+    <div className="floatcta" ref={wrapRef} data-od-id="floating-cta">
+      <motion.button className="btn btn--fire" onClick={click} aria-label="Join the Wave #1 waitlist"
+        initial={{ y:80, opacity:0 }} animate={{ y:0, opacity:1, transition:{ delay:.9, duration:.7, ease:EASE } }}>
+        {Ic.star}{merged ? 'Lock it in' : 'Join Wave #1'}
+      </motion.button>
+    </div>
+  );
+}
+
+/* ---------------- Craft: how it's made + story + FAQ, one flow ---------------- */
+const STEPS = [
+  { t:'Designed', p:'Every build starts as a sketch: one Pokémon, one element, one mood. The scene has to earn the card it lives in — the rarer the card, the deeper the lore.' },
+  { t:'Built', p:'Oversized card shell, sculpted terrain, hand-painted backdrops, real foliage. Hot glue, scalpels and pure stubbornness.' },
+  { t:'Wired & lit', p:'Real LEDs, wired by hand and tuned to the element — ember flicker, cool torrent, spectral violet. The dark does half the work.' },
+  { t:'Sealed & shipped', p:'Signed, numbered, packed like it’s precious — because it is. From the Central Coast to your shelf, Australia-wide.' },
+];
+
+function Reveal({ children, delay=0 }) {
+  return (
+    <motion.div initial={{ opacity:0, y:28 }} whileInView={{ opacity:1, y:0 }}
+      viewport={{ once:true, amount:.2 }}
+      transition={{ duration:.75, ease:EASE, delay }}>
+      {children}
+    </motion.div>
+  );
+}
+
+function Craft() {
+  const [open, setOpen] = useState(0);
+  return (
+    <section className="craft" id="craft" data-od-id="section-craft">
+      <div className="deco deco--fire"><img src="assets/scene-firebreath.jpg" alt="" aria-hidden="true" loading="lazy" /></div>
+      <div className="deco deco--megax"><img src="assets/scene-megax.jpg" alt="" aria-hidden="true" loading="lazy" /></div>
+      <div className="deco deco--gengar"><img src="assets/scene-gengar.jpg" alt="" aria-hidden="true" loading="lazy" /></div>
+      <div className="deco deco--storm"><img src="assets/scene-lightning.jpg" alt="" aria-hidden="true" loading="lazy" /></div>
+      <div className="wrap">
+        <Reveal><div className="kick">The craft · the crew · the questions</div></Reveal>
+        <Reveal delay={.06}><h2 data-od-id="craft-title">Built by hand. <em>Lit</em> like it matters.</h2></Reveal>
+        <Reveal delay={.12}><p className="lede">No factory, no moulds, no shortcuts. Two blokes, a workshop on the Central Coast, and an unhealthy respect for 1999 card borders.</p></Reveal>
+
+        <div className="steps" data-od-id="craft-steps">
+          {STEPS.map((st, i) => (
+            <Reveal key={st.t} delay={i*.07}>
+              <div className="step" data-od-id={'craft-step-'+(i+1)}>
+                <div className="n">{String(i+1).padStart(2,'0')}</div>
+                <div><h3>{st.t}</h3><p>{st.p}</p></div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="storyband" data-od-id="craft-story">
+          <Reveal>
+            <div>
+              <h3 data-od-id="story-title">Two coastie nerds, one glue-gun problem</h3>
+              <p>We grew up sleeving these cards and arguing about weakness multipliers. <b>illumorama</b> is what happened when that never wore off — oversized classics rebuilt as fully-lit elemental scenes, hand-crafted in our workshop.</p>
+              <p>Every diorama is designed, sculpted, wired and signed by us. They’re entirely custom designs you won’t find anywhere else — and if the one you’re chasing is spoken for, we’ll build yours to order.</p>
+              <div className="makers">
+                <a className="maker" href="https://instagram.com/crouchytattoos" target="_blank" rel="noreferrer" data-od-id="maker-crouchy">
+                  <i style={{background:'var(--stage-aura)'}}>C</i><b>@crouchytattoos</b>{Ic.ig(14)}
+                </a>
+                <a className="maker" href="https://instagram.com/zackaryodonogue" target="_blank" rel="noreferrer" data-od-id="maker-zack">
+                  <i style={{background:'var(--stage-torrent)'}}>Z</i><b>@zackaryodonogue</b>{Ic.ig(14)}
+                </a>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={.1}>
+            <div>
+              <div className="frame">
+                <video autoPlay muted loop playsInline preload="metadata" src="assets/kling-charizard-storm.mp4" />
+              </div>
+              <div className="cap">Charizard - W1-02 - Reveal Animation - Workshop cut</div>
+            </div>
+          </Reveal>
+        </div>
+
+        <Reveal>
+          <div className="wideshot" data-od-id="craft-wideshot">
+            <img src="assets/diorama-charizard-interior.jpg" alt="Inside the Charizard diorama — hand-painted volcanic backdrop, sculpted rocks and real foliage" loading="lazy" />
+            <div className="cap">INSIDE W1/002 · HAND-PAINTED BACKDROP, SCULPTED ROCK, REAL FOLIAGE · LIT BY THE BUILD ITSELF</div>
+          </div>
+        </Reveal>
+
+        <div className="faq" data-od-id="craft-faq">
+          <Reveal><h3 data-od-id="faq-title">Fair questions</h3></Reveal>
+          {FAQS.map((f, i) => (
+            <Reveal key={i} delay={i*.05}>
+              <div className={'qa' + (open===i ? ' open' : '')} data-od-id={'faq-item-'+(i+1)}>
+                <button className="q" aria-expanded={open===i} onClick={()=>setOpen(open===i?-1:i)}>
+                  {f.q}{Ic.plus}
+                </button>
+                <AnimatePresence initial={false}>
+                  {open===i && (
+                    <motion.div className="a" initial={{height:0, opacity:0}}
+                      animate={{height:'auto', opacity:1, transition:{duration:.45, ease:EASE}}}
+                      exit={{height:0, opacity:0, transition:{duration:.3, ease:EASE}}}
+                      style={{overflow:'hidden'}}>
+                      <p>{f.a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Final CTA (dock target) ---------------- */
+function Drop({ slotRef, email, setEmail, done, msg, submit }) {
+  return (
+    <section className="drop" id="drop" data-od-id="section-drop">
+      <div className="glowbed" />
+      <div className="wrap">
+        <Reveal><div className="kick">The drop</div></Reveal>
+        <Reveal delay={.06}><h2 data-od-id="drop-title">First dibs or fastest fingers. <em>Your call.</em></h2></Reveal>
+        <Reveal delay={.12}><p className="sub">Wave #1 is six custom designs, hand-built in small runs — and made to order when the one you want is spoken for. The waitlist hears the drop date first and picks first.</p></Reveal>
+        <Reveal delay={.18}>
+          {done ? (
+            <p className="wl-done" data-od-id="drop-success">You’re in. First dibs locked — watch your inbox.</p>
+          ) : (
+            <div>
+              <form className="wlform" onSubmit={(e)=>{e.preventDefault(); submit();}} data-od-id="drop-form">
+                <input className="input" id="wl-email" type="email" placeholder="you@coastie.com.au" aria-label="Email address"
+                  value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <div className="ctaslot" ref={slotRef} aria-hidden="true" />
+              </form>
+              <p className="wl-note" style={msg ? {color:'var(--danger)'} : null} data-od-id="drop-note">
+                {msg || 'No spam, no sponsor reads — just the drop date and the builds.'}
+              </p>
+            </div>
+          )}
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Footer ---------------- */
+function Foot() {
+  return (
+    <footer className="foot" data-od-id="footer">
+      <div className="duo" />
+      <div className="wrap">
+        <div className="fgrid">
+          <div>
+            <span className="wm">illumorama</span>
+            <p>Illuminated Pokémon dioramas — oversized cards, sculpted elemental scenes, real lighting. Hand-built on the Central Coast NSW, shipped Australia-wide.</p>
+          </div>
+          <div>
+            <h4>Wave #1</h4>
+            <ul data-od-id="footer-wave-links">
+              {WAVE.map(w => <li key={w.sku}><a href="#top">{w.name} · <span className="mono" style={{fontSize:'12px'}}>{w.sku}</span></a></li>)}
+            </ul>
+          </div>
+          <div>
+            <h4>The workshop</h4>
+            <ul data-od-id="footer-links">
+              <li><a href="#craft">How it’s made</a></li>
+              <li><a href="#craft">Fair questions</a></li>
+              <li><a href="#drop">Join the waitlist</a></li>
+              <li><a href="https://www.instagram.com/illumorama" target="_blank" rel="noreferrer">@illumorama</a></li>
+              <li><a href="https://instagram.com/crouchytattoos" target="_blank" rel="noreferrer">@crouchytattoos</a></li>
+              <li><a href="https://instagram.com/zackaryodonogue" target="_blank" rel="noreferrer">@zackaryodonogue</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="base">
+          <span>© 2026 illumorama · Central Coast NSW · hand-crafted, custom designs</span>
+          <span className="mono">WAVE #1 · SIX DESIGNS · LIT IN THE DARK</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ---------------- App ---------------- */
+function App() {
+  const slotRef = useRef(null);
+  const [email, setEmail] = useState('');
+  const [done, setDone] = useState(false);
+  const [msg, setMsg] = useState('');
+  const submit = () => {
+    const field = document.getElementById('wl-email');
+    const v = (field ? field.value : email).trim();
+    if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) { setDone(true); setMsg(''); }
+    else {
+      setMsg('That email’s not quite right — have another crack.');
+      if (field) field.focus();
+    }
+  };
+  return (
+    <React.Fragment>
+      <motion.header className="gnav" data-od-id="glass-nav"
+        initial={{ y:-70, opacity:0 }} animate={{ y:0, opacity:1, transition:{ duration:.7, ease:EASE, delay:.3 } }}>
+        <a className="wm" href="#top" data-od-id="nav-wordmark">illumorama</a>
+        <nav>
+          <a href="#top">The Wave</a>
+          <a href="#craft">The Craft</a>
+          <a href="#drop">The Drop</a>
+        </nav>
+        <a className="gnav-ig" href="https://www.instagram.com/illumorama" target="_blank" rel="noreferrer" aria-label="illumorama on Instagram">{Ic.ig(15)}</a>
+        <button className="btn btn--fire" data-od-id="nav-cta"
+          onClick={()=>{ const el=document.getElementById('drop'); if(el) window.scrollTo({top:el.offsetTop, behavior:RM?'auto':'smooth'}); }}>
+          Join Wave #1
+        </button>
+      </motion.header>
+
+      <div id="top" />
+      <Hero />
+      <Craft />
+      <Drop slotRef={slotRef} email={email} setEmail={setEmail} done={done} msg={msg} submit={submit} />
+      <Foot />
+      {!done && <FloatingCTA slotRef={slotRef} onSubmit={submit} />}
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -73,8 +73,7 @@ html.rm .btn--fire::after{display:none}
 @media(max-width:600px){.gnav{gap:10px;padding:9px 15px}.gnav nav{gap:10px}
   .gnav nav a{font-size:12px}.gnav .btn{display:none}
   .gnav-ig{display:grid;place-items:center;width:28px;height:28px;color:var(--muted);transition:color .2s var(--ease)}
-  .gnav-ig:hover{color:var(--gold)}
-  .hero-social{display:none}}
+  .gnav-ig:hover{color:var(--gold)}}
 
 /* ---------- hero slider ---------- */
 .hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--bg)}
@@ -157,6 +156,8 @@ html.rm .btn--fire::after{display:none}
   .hero-social{top:20px;right:16px}
   .hero-social a{width:40px;height:40px}
 }
+/* ≤600: the nav pill carries the IG icon — this must sit after the .hero-social base rule to win the cascade */
+@media(max-width:600px){.hero-social{display:none}}
 
 /* element tags + gold flag */
 .tag{display:inline-flex;align-items:center;gap:6px;font:700 11px/1 var(--f-body);text-transform:uppercase;

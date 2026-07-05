@@ -298,31 +298,31 @@ if (RM) document.documentElement.classList.add('rm');
 
 /* ---------------- Wave #1 data ---------------- */
 const WAVE = [
-  { sku:'W1/001', name:'Mega Charizard X', el:'Fire', elc:'var(--el-fire)', stage:'var(--stage-inferno)',
+  { sku:'W1-01', name:'Mega Charizard X', el:'Fire', elc:'var(--el-fire)', stage:'var(--stage-inferno)',
     word:'Inferno', img:'assets/w1-01-nobg.webp', vid:'assets/bg-fire-inferno.mp4',
     line:'360 HP of hand-wired inferno. The chase card you never pulled, rebuilt in three dimensions.' },
-  { sku:'W1/002', name:'Charizard', el:'Fire', elc:'var(--el-fire)', stage:'var(--stage-flame)',
+  { sku:'W1-02', name:'Charizard', el:'Fire', elc:'var(--el-fire)', stage:'var(--stage-flame)',
     word:'First Flame', img:'assets/w1-02-nobg.webp', vid:'assets/bg-fire-ember.mp4',
-    line:'The one that started every binder. Now it burns on your shelf, painted sky and all.' },
-  { sku:'W1/003', name:'Greninja', el:'Water', elc:'var(--el-water)', stage:'var(--stage-torrent)',
+    line:'The one that started every binder. Now it burns on your shelf, glowing sky and all.' },
+  { sku:'W1-03', name:'Greninja', el:'Water', elc:'var(--el-water)', stage:'var(--stage-torrent)',
     word:'Torrent', img:'assets/w1-03-nobg.webp', vid:'assets/bg-water-torrent.mp4',
-    line:'Mist Slash, frozen mid-strike in a moonlit forest torrent. Sharpest thing we’ve ever glued.' },
-  { sku:'W1/004', name:'Gengar', el:'Ghost', elc:'var(--el-ghost)', stage:'var(--stage-haunt)',
+    line:'Mist Slash, frozen mid-strike in a moonlit forest torrent. Sharpest thing we’ve ever lit.' },
+  { sku:'W1-04', name:'Gengar', el:'Ghost', elc:'var(--el-ghost)', stage:'var(--stage-haunt)',
     word:'Haunt', img:'assets/w1-04-nobg.webp', vid:'assets/bg-ghost-haunt.mp4',
     line:'Grinning in a graveyard that actually glows. Sleep well, legend.' },
-  { sku:'W1/005', name:'Lucario', el:'Fighting', elc:'var(--el-electric)', stage:'var(--stage-aura)',
+  { sku:'W1-05', name:'Lucario', el:'Fighting', elc:'var(--el-electric)', stage:'var(--stage-aura)',
     word:'Aura', img:'assets/w1-05-nobg.webp', vid:'assets/bg-fighting-aura.mp4',
     line:'Reads auras from half a mile away. Reads the room from your bookshelf, canyon light included.' },
-  { sku:'W1/006', name:'Umbreon', el:'Dark', elc:'var(--el-dark)', stage:'var(--stage-moon)',
+  { sku:'W1-06', name:'Umbreon', el:'Dark', elc:'var(--el-dark)', stage:'var(--stage-moon)',
     word:'Moonlight', wc:'#ffd98a', img:'assets/w1-06-nobg.webp', vid:'assets/bg-dark-moonlit.mp4',
     line:'Gold rings on a pitch-black build. The quiet flex of Wave #1.' },
 ];
 
 const FAQS = [
   { q:'Are these official Pokémon products?', a:'Nah — they’re hand-built collector art pieces, made in our workshop. Oversized card shell, sculpted scene, real lighting. Every design is an entirely custom build you won’t see anywhere else — not a factory anything.' },
-  { q:'How many exist?', a:'Wave #1 launches with six designs — Mega Charizard X, Charizard, Greninja, Gengar, Lucario and Umbreon. Each one is hand-crafted in small numbers, and if the design you’re chasing is spoken for, we can build yours to order. The rarer the card, the deeper the lore we build into its scene.' },
+  { q:'How many exist?', a:'Wave #1 launches with six designs — Mega Charizard X, Charizard, Greninja, Gengar, Lucario and Umbreon. Each one is hand-crafted in limited runs only — once a design sells out, it’s gone. Get in quick. The rarer the card, the deeper the lore we build into its scene.' },
   { q:'Do they actually light up?', a:'That’s the whole point, mate. Real LEDs, wired by hand and tuned to the element — ember flicker for fire, cool cyan for water, that eerie violet for Gengar. They’re built to be seen in the dark.' },
-  { q:'When’s the drop?', a:'When they’re ready and not a day before — hand-built means hand-built. The waitlist hears the exact date first and gets first dibs. That’s the only queue there is.' },
+  { q:'When’s the drop?', a:<>Wave 1 is almost sold out — remaining stock releases <b>July 19th</b>. Reserved slot orders can be picked up on the Central Coast, NSW, or grab one at <a href="https://njcollectibles.com.au" target="_blank" rel="noreferrer" style={{color:'var(--gold)'}}>NJ Collectibles</a>. Shipping details to be advised.</> },
   { q:'Where do you ship?', a:'Australia-wide from the Central Coast, NSW — packed like the collector pieces they are. Overseas collector? Get in touch and we’ll see what we can sort.' },
 ];
 
@@ -534,9 +534,9 @@ function FloatingCTA({ slotRef, onSubmit }) {
 /* ---------------- Craft: how it's made + story + FAQ, one flow ---------------- */
 const STEPS = [
   { t:'Designed', p:'Every build starts as a sketch: one Pokémon, one element, one mood. The scene has to earn the card it lives in — the rarer the card, the deeper the lore.' },
-  { t:'Built', p:'Oversized card shell, sculpted terrain, hand-painted backdrops, real foliage. Hot glue, scalpels and pure stubbornness.' },
+  { t:'Built', p:'Oversized card shell, hand-crafted scenes with sculpted terrain and foliage, printed backdrops, 3D-printed boxes. Then the lights go in — because the glow is the whole point.' },
   { t:'Wired & lit', p:'Real LEDs, wired by hand and tuned to the element — ember flicker, cool torrent, spectral violet. The dark does half the work.' },
-  { t:'Sealed & shipped', p:'Signed, numbered, packed like it’s precious — because it is. From the Central Coast to your shelf, Australia-wide.' },
+  { t:'Sealed & shipped', p:'Tagged, numbered, packed like it’s precious — because it is. From the Central Coast to your shelf, Australia-wide.' },
 ];
 
 function Reveal({ children, delay=0 }) {
@@ -578,8 +578,11 @@ function Craft() {
             <div>
               <h3 data-od-id="story-title">Two coastie nerds, one 3D printer and a love for collectibles...</h3>
               <p>We grew up sleeving these cards and arguing about weakness multipliers. <b>illumorama</b> is what happened when that never wore off — oversized classics rebuilt as fully-lit elemental scenes, hand-crafted in our workshop.</p>
-              <p>Every diorama is designed, sculpted, wired and signed by us. They’re entirely custom designs you won’t find anywhere else — and if the one you’re chasing is spoken for, we’ll build yours to order.</p>
+              <p>Every diorama is designed, sculpted, wired and tagged by us. They’re entirely custom designs you won’t find anywhere else — made in limited runs, and once they’re gone, they’re gone.</p>
               <div className="makers">
+                <a className="maker" href="https://www.instagram.com/illumorama" target="_blank" rel="noreferrer" data-od-id="maker-illumorama">
+                  <i style={{background:'var(--stage-inferno)'}}>I</i><b>@illumorama</b>{Ic.ig(14)}
+                </a>
                 <a className="maker" href="https://instagram.com/crouchytattoos" target="_blank" rel="noreferrer" data-od-id="maker-crouchy">
                   <i style={{background:'var(--stage-aura)'}}>C</i><b>@crouchytattoos</b>{Ic.ig(14)}
                 </a>
@@ -601,8 +604,8 @@ function Craft() {
 
         <Reveal>
           <div className="wideshot" data-od-id="craft-wideshot">
-            <img src="assets/diorama-charizard-interior.jpg" alt="Inside the Charizard diorama — hand-painted volcanic backdrop, sculpted rocks and real foliage" loading="lazy" />
-            <div className="cap">INSIDE W1/002 · HAND-PAINTED BACKDROP, SCULPTED ROCK, REAL FOLIAGE · LIT BY THE BUILD ITSELF</div>
+            <img src="assets/diorama-charizard-interior.jpg" alt="Inside the Charizard diorama — printed volcanic backdrop, sculpted rocks and foliage" loading="lazy" />
+            <div className="cap">INSIDE W1-02 · PRINTED BACKDROP, SCULPTED ROCK, FOLIAGE · LIT BY THE BUILD ITSELF</div>
           </div>
         </Reveal>
 
@@ -641,7 +644,7 @@ function Drop({ slotRef, email, setEmail, done, msg, submit }) {
       <div className="wrap">
         <Reveal><div className="kick">The drop</div></Reveal>
         <Reveal delay={.06}><h2 data-od-id="drop-title">First dibs or fastest fingers. <em>Your call.</em></h2></Reveal>
-        <Reveal delay={.12}><p className="sub">Wave #1 is six custom designs, hand-built in small runs — and made to order when the one you want is spoken for. The waitlist hears the drop date first and picks first.</p></Reveal>
+        <Reveal delay={.12}><p className="sub">Wave #1 is six custom designs, hand-built in limited runs — once they’re spoken for, that’s it. Remaining stock drops July 19th, and the waitlist gets first crack before the rest of the internet.</p></Reveal>
         <Reveal delay={.18}>
           {done ? (
             <p className="wl-done" data-od-id="drop-success">You’re in. First dibs locked — watch your inbox.</p>
@@ -653,7 +656,7 @@ function Drop({ slotRef, email, setEmail, done, msg, submit }) {
                 <div className="ctaslot" ref={slotRef} aria-hidden="true" />
               </form>
               <p className="wl-note" style={msg ? {color:'var(--danger)'} : null} data-od-id="drop-note">
-                {msg || 'No spam, no sponsor reads — just the drop date and the builds.'}
+                {msg || 'No spam, no sponsor reads — just early access and the builds.'}
               </p>
             </div>
           )}
@@ -672,7 +675,7 @@ function Foot() {
         <div className="fgrid">
           <div>
             <span className="wm">illumorama</span>
-            <p>Illuminated Pokémon dioramas — oversized cards, sculpted elemental scenes, real lighting. Hand-built on the Central Coast NSW, shipped Australia-wide.</p>
+            <p>Illuminated Pokémon dioramas. Custom designed on the Central Coast, NSW.</p>
           </div>
           <div>
             <h4>Wave #1</h4>

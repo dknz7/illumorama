@@ -5,6 +5,7 @@
 const NOTIFY_TO = 'crouchytattoos@gmail.com';
 const FROM = 'illumorama <hello@illumorama.store>';
 const IG = 'https://www.instagram.com/illumorama';
+const SITE = 'https://illumorama.store';
 
 const confirmationHtml = () => `
 <!doctype html>
@@ -33,8 +34,17 @@ const confirmationHtml = () => `
             Six custom designs. Real LEDs, wired by hand. Built on the Central Coast NSW.
           </p>
         </td></tr>
-        <tr><td style="padding:28px 40px 36px;text-align:center;">
-          <a href="${IG}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#fffefb;background:#ff4f00;border-radius:8px;padding:13px 26px;text-decoration:none;">Follow the builds on Instagram</a>
+        <tr><td style="padding:28px 40px 36px;">
+          <table role="presentation" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+            <tr>
+              <td style="padding:0 6px;">
+                <a href="${SITE}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#fffefb;background:#ff4f00;border-radius:8px;padding:13px 22px;text-decoration:none;">See Wave #1</a>
+              </td>
+              <td style="padding:0 6px;">
+                <a href="${IG}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#ffd98a;border:1px solid #ffd98a;border-radius:8px;padding:12px 22px;text-decoration:none;">Follow on Instagram</a>
+              </td>
+            </tr>
+          </table>
         </td></tr>
         <tr><td style="padding:0 40px 32px;text-align:center;border-top:1px solid #3a2f28;">
           <p style="margin:24px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#6f665f;">
@@ -105,7 +115,7 @@ export default async function handler(req, res) {
       from: FROM,
       to: [NOTIFY_TO],
       reply_to: email,
-      subject: `New signup: ${email}`,
+      subject: `Illumorama NEW Sign Up: ${email}`,
       html: notifyHtml(email),
     }),
   ]);

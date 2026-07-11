@@ -24,6 +24,11 @@ const confirmationHtml = () => `
         <tr><td style="padding:24px 40px 0;text-align:center;">
           <div style="font-family:Georgia,'Times New Roman',serif;font-size:26px;line-height:1.2;color:#fff4e6;font-weight:bold;">You&rsquo;re on the list.</div>
         </td></tr>
+        <tr><td style="padding:24px 40px 0;">
+          <a href="${SITE}" style="text-decoration:none;">
+            <img src="${SITE}/assets/wave1-email.jpg" alt="Wave #1 — all six illuminated dioramas, lit up" width="480" style="display:block;width:100%;max-width:480px;height:auto;border:1px solid #3a2f28;border-radius:8px;" />
+          </a>
+        </td></tr>
         <tr><td style="padding:18px 40px 0;">
           <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#a89f97;text-align:center;">
             Wave #1 went live on <span style="color:#fff4e6;font-weight:bold;">July 9th</span> and it&rsquo;s almost sold out &mdash; only a handful of boxes left. We&rsquo;ll be in touch about remaining availability, and you&rsquo;ve got first dibs when <span style="color:#ffd98a;font-weight:bold;">Wave #2</span> drops.

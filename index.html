@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>illumorama — Wave #1 · Illuminated Pokémon Dioramas, Hand-Built on the Central Coast</title>
-<meta name="description" content="Six custom illuminated Pokémon dioramas. Oversized cards, sculpted elemental scenes, real lighting. Hand-built on the Central Coast NSW, shipped Australia-wide. Join the Wave #1 waitlist." />
+<title>illumorama — Wave #1 Now Live · Illuminated Pokémon Dioramas, Hand-Built on the Central Coast</title>
+<meta name="description" content="Six custom illuminated Pokémon dioramas. Oversized cards, sculpted elemental scenes, real lighting. Hand-built on the Central Coast NSW, shipped Australia-wide. Wave #1 is live and almost sold out — join the list for the last boxes and first dibs on Wave #2." />
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <style>
 /* ============================================================
@@ -95,6 +95,13 @@ html.rm .btn--fire::after{display:none}
 .pane .tint{position:absolute;inset:0}
 .pane .pinner{position:relative;z-index:1;padding:56px 52px;width:100%;max-width:min(640px,40vw)}
 .pane .sku{font:700 12px/1 var(--f-mono);letter-spacing:.2em;color:var(--gold)}
+.livepill{display:inline-flex;align-items:center;gap:8px;font:700 11px/1 var(--f-body);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--success);background:#46d17a14;border:1px solid #46d17a4d;
+  border-radius:var(--r-pill);padding:6px 13px;margin-bottom:16px}
+.livepill .ldot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 8px #46d17a;
+  animation:livedot 1.6s ease infinite}
+@keyframes livedot{0%,100%{opacity:1}50%{opacity:.3}}
+html.rm .livepill .ldot{animation:none}
 .pane h1{font:900 clamp(38px,4.4vw,64px)/1.02 var(--f-disp);letter-spacing:-.015em;margin:14px 0 12px;max-width:12ch}
 .pane p{color:#fff4e6d9;max-width:44ch;font-size:15.5px}
 .pane .tagrow{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
@@ -147,6 +154,7 @@ html.rm .btn--fire::after{display:none}
     height:250px;min-height:0;margin:0;display:flex;align-items:center;justify-content:center}
   .hero .bigword span{top:94px}
   .pane .pinner{padding:18px 20px;max-width:none;text-align:center}
+  .livepill{padding:5px 10px;font-size:10px;margin-bottom:10px}
   .pane h1{font-size:27px;margin:10px 0 8px;max-width:none}
   .pane p{font-size:13.5px;max-width:none;margin:0 auto}
   .pane .tagrow{margin-top:12px;justify-content:center}
@@ -320,9 +328,9 @@ const WAVE = [
 
 const FAQS = [
   { q:'Are these official Pokémon products?', a:'Nah — they’re hand-built collector art pieces, made in our workshop. Oversized card shell, sculpted scene, real lighting. Every design is an entirely custom build you won’t see anywhere else — not a factory anything.' },
-  { q:'How many exist?', a:'Wave #1 launches with six designs — Mega Charizard X, Charizard, Greninja, Gengar, Lucario and Umbreon. Each one is hand-crafted in limited runs only — once a design sells out, it’s gone. Get in quick. The rarer the card, the deeper the lore we build into its scene.' },
+  { q:'How many exist?', a:'Wave #1 is live with six designs — Mega Charizard X, Charizard, Greninja, Gengar, Lucario and Umbreon. Each one is hand-crafted in limited runs only — once a design sells out, it’s gone. Get in quick. The rarer the card, the deeper the lore we build into its scene.' },
   { q:'Do they actually light up?', a:'That’s the whole point, mate. Real LEDs, wired by hand and tuned to the element — ember flicker for fire, cool cyan for water, that eerie violet for Gengar. They’re built to be seen in the dark.' },
-  { q:'When’s the drop?', a:<>Wave 1 is almost sold out — remaining stock releases <b>July 19th</b>. Reserved slot orders can be picked up on the Central Coast, NSW, or grab one at <a href="https://njcollectibles.com.au" target="_blank" rel="noreferrer" style={{color:'var(--gold)'}}>NJ Collectibles</a>. Shipping details to be advised.</> },
+  { q:'When’s the drop?', a:<>It already dropped — Wave #1 went live <b>July 9th</b> and it’s almost sold out. The last boxes are up for grabs now: pick up on the Central Coast, NSW, or grab one at <a href="https://njcollectibles.com.au" target="_blank" rel="noreferrer" style={{color:'var(--gold)'}}>NJ Collectibles</a>. Drop your email below and we’ll be in touch about what’s left — plus first dibs on Wave #2.</> },
   { q:'Where do you ship?', a:'Australia-wide from the Central Coast, NSW — packed like the collector pieces they are. Overseas collector? Get in touch and we’ll see what we can sort.' },
 ];
 
@@ -426,6 +434,7 @@ function Hero() {
         <div className="pinner">
           <AnimatePresence mode="wait">
             <motion.div key={'m'+idx} variants={metaV} initial="enter" animate="center" exit="exit">
+              <div className="livepill"><span className="ldot" />Wave #1 Now Live — Almost Sold Out</div>
               <div className="sku mono">{s.sku} · WAVE #1</div>
               <h1 data-od-id={'hero-title-'+(idx+1)}>{s.name}</h1>
               <p>{s.line}</p>
@@ -487,7 +496,7 @@ function Hero() {
 }
 
 /* ---------------- Floating -> docking CTA ---------------- */
-function FloatingCTA({ slotRef, onSubmit }) {
+function FloatingCTA({ slotRef, onSubmit, busy }) {
   const wrapRef = useRef(null);
   const mergedRef = useRef(false);
   const [merged, setMerged] = useState(false);
@@ -525,7 +534,7 @@ function FloatingCTA({ slotRef, onSubmit }) {
     <div className="floatcta" ref={wrapRef} data-od-id="floating-cta">
       <motion.button className="btn btn--fire" onClick={click} aria-label="Join the Wave #1 waitlist"
         initial={{ y:80, opacity:0 }} animate={{ y:0, opacity:1, transition:{ delay:.9, duration:.7, ease:EASE } }}>
-        {Ic.star}{merged ? 'Lock it in' : 'Join Wave #1'}
+        {Ic.star}{merged ? (busy ? 'Locking in…' : 'Lock it in') : 'Join Wave #1'}
       </motion.button>
     </div>
   );
@@ -644,10 +653,10 @@ function Drop({ slotRef, email, setEmail, done, msg, submit }) {
       <div className="wrap">
         <Reveal><div className="kick">The drop</div></Reveal>
         <Reveal delay={.06}><h2 data-od-id="drop-title">First dibs or fastest fingers. <em>Your call.</em></h2></Reveal>
-        <Reveal delay={.12}><p className="sub">Wave #1 is six custom designs, hand-built in limited runs — once they’re spoken for, that’s it. Remaining stock drops July 19th, and the waitlist gets first crack before the rest of the internet.</p></Reveal>
+        <Reveal delay={.12}><p className="sub">Wave #1 is live and almost sold out — six custom designs, hand-built in limited runs, down to the last few boxes. Drop your email and we’ll be in touch about what’s left, plus first crack at Wave #2 before the rest of the internet.</p></Reveal>
         <Reveal delay={.18}>
           {done ? (
-            <p className="wl-done" data-od-id="drop-success">You’re in. First dibs locked — watch your inbox.</p>
+            <p className="wl-done" data-od-id="drop-success">You’re in. First dibs locked — confirmation’s on its way to your inbox.</p>
           ) : (
             <div>
               <form className="wlform" onSubmit={(e)=>{e.preventDefault(); submit();}} data-od-id="drop-form">
@@ -710,14 +719,30 @@ function App() {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
   const [msg, setMsg] = useState('');
-  const submit = () => {
+  const busyRef = useRef(false);
+  const [busy, setBusy] = useState(false);
+  const submit = async () => {
     const field = document.getElementById('wl-email');
     const v = (field ? field.value : email).trim();
-    if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) { setDone(true); setMsg(''); }
-    else {
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) {
       setMsg('That email’s not quite right — have another crack.');
       if (field) field.focus();
+      return;
     }
+    if (busyRef.current) return;
+    busyRef.current = true; setBusy(true); setMsg('');
+    try {
+      const r = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: v }),
+      });
+      if (!r.ok) throw new Error('signup failed: ' + r.status);
+      setDone(true);
+    } catch (e) {
+      setMsg('Something hiccuped saving your email — give it another crack.');
+    }
+    busyRef.current = false; setBusy(false);
   };
   return (
     <React.Fragment>
@@ -741,7 +766,7 @@ function App() {
       <Craft />
       <Drop slotRef={slotRef} email={email} setEmail={setEmail} done={done} msg={msg} submit={submit} />
       <Foot />
-      {!done && <FloatingCTA slotRef={slotRef} onSubmit={submit} />}
+      {!done && <FloatingCTA slotRef={slotRef} onSubmit={submit} busy={busy} />}
     </React.Fragment>
   );
 }
